@@ -9,8 +9,12 @@
     }
   </style>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+
+
 </head>
 <body>
 <div id="visualization">
@@ -19,12 +23,127 @@
         <input type="button" id="zoomOut" value="Zoom out"/>
         <input type="button" id="moveLeft" value="Move left"/>
         <input type="button" id="moveRight" value="Move right"/>
-        <input type="button" id="toggleRollingMode" value="toggleRollingMode"/>
-    </div>
+        <input type="button" id="2008" value="2008"/>
+        <input type="button" id="2009" value="2009"/>
+        <input type="button" id="2010" value="2010"/>
+        <input type="button" id="2011" value="2011"/>
+        <input type="button" id="2012" value="2012"/>
+        <input type="button" id="2013" value="2013"/>
+        <input type="button" id="2014" value="2014"/>
+        <input type="button" id="2015" value="2015"/>
+        <input type="button" id="2016" value="2016"/>
+        <input type="button" id="2017" value="2017"/>
+        <input type="button" id="2018" value="2018"/>
+
+
+    </div> 
 </div>
 
-<script type="text/javascript" src="timeline.js"></script>
+<!-- <form id="dimensions">
+  <input  type='radio' id="2008" name="mode" checked>2008</input>
+  <input  type='radio' id="2009" name="mode" checked>2009</input>
+  <input  type='radio' id="2010" name="mode" checked>2010</input>
+  <input  type='radio' id="2011" name="mode" checked>2011</input>
+  <input  type='radio' id="2012" name="mode" checked>2012</input>
+  <input  type='radio' id="2013" name="mode" checked>2013</input>
+  <input  type='radio' id="2014" name="mode" checked>2014</input>
+  <input  type='radio' id="2015" name="mode" checked>2015</input>
+  <input  type='radio' id="2016" name="mode" checked>2016</input>
+  <input  type='radio' id="2017" name="mode" checked>2017</input>
+  <input  type='radio' id="2018" name="mode" checked>2018</input>
+</form> -->
 
+<!-- <script>
+  function filterJSON(json, key, value){
+      var result = [];
+  jsonKeys = Object.keys(json);
+  jsonKeys.forEach( function(val, idx, arr){
+    if(val == key){
+      result.push(value)}
+  })
+  return result[0];
+  console.log(result[0])
+
+}
+
+d3.json("othertest.json", function(error,json){
+  if (error) throw error;
+  
+  function changeIt(){
+    //get rid of everything and re-draw
+    	d3.selectAll(".line").remove()
+      d3.selectAll("#yaxis").remove()
+      d3.selectAll("#xaxis").remove()
+    //get the value from the dropdown
+  		var sect = document.getElementById("ddSel");
+      var country = sect.options[sect.selectedIndex].key;
+      var form = document.getElementById("dimensions")
+      var form_val;
+    	for(var i=0; i<form.length; i++){
+        if(form[i].checked){
+          form_val = form[i].id;}}
+      data = filterJSON(json, country, form_val)
+      drawGraph(data, form_val)      
+            }
+  var dropdown = d3.select("select")
+  	.attr("id", "ddSel");
+  
+  var options = dropdown.selectAll("option")
+    .data(json)
+  console.log(json)
+    
+  options.enter()
+    .append("option")
+    .text(function(d){return d})
+		dropdown.on("change",changeIt)
+    
+	var dataDim = d3.select("#dimensions")
+	dataDim.on("change", changeIt)
+  
+  data = filterJSON(json, "Construction", "2017")
+  console.log(data)
+  // drawGraph(data, "2008")
+  
+});
+</script> -->
+
+<!-- <script type="text/javascript" src="timeline.js"></script> -->
+<script type="text/javascript" src="timeline.js">
+
+document.write(jsonfinal)
+</script>
+
+
+<!-- <option value="construction">Construction</option>
+
+<select id="industry-dropdown" name="industry">
+  </select>
+
+<script>
+let dropdown = document.getElementById('industry-dropdown');
+dropdown.length = 0;
+
+let defaultOption = document.createElement('option');
+defaultOption.text = 'Choose Industry';
+
+dropdown.add(defaultOption);
+dropdown.selectedIndex = 0;
+
+
+d3.json("othertest.json", function(error,json){
+  if (error) throw error;
+
+    const data = JSON.parse(json.responseText);
+    let option;
+    for (let i = 0; i < data.length; i++) {
+      option = document.createElement('option');
+      option.text = data[i].name;
+      option.value = data[i].abbreviation;
+      dropdown.add(option);
+    } 
+});
+
+  </script> -->
 
 </body>
 </html>
